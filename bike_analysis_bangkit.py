@@ -115,3 +115,8 @@ Pola penggunaan sepeda cenderung lebih tinggi pada hari non-holiday daripada pad
 Berdasarkan analisis visual pola penggunaan sepeda pada kondisi cuaca yang berbeda, terlihat bahwa jumlah pengguna sepeda cenderung lebih banyak saat cuaca cerah (clear) dan lebih sedikit saat cuaca hujan ringan (light rain). Hal ini menunjukkan bahwa kondisi cuaca memengaruhi pola penggunaan sepeda, dengan cuaca cerah cenderung meningkatkan jumlah penggunaan sepeda dan cuaca hujan ringan cenderung mengurangi jumlah penggunaan sepeda. Oleh karena itu, kondisi cuaca dapat memainkan peran penting dalam pola penggunaan sepeda
 """
 
+# Tampilan Streamlit
+
+with st.sidebar:
+    # Menambahkan logo perusahaan
+    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png")
