@@ -9,7 +9,7 @@ Original file is located at
 # Proyek Analisis Data: [Input Nama Dataset]
 - **Nama:** Dyan Aqlima Febriyanti
 - **Email:** dyanaqlima323@gmail.com
-- **ID Dicoding:** Dyan Aqlima Febriyanti
+- **ID Dicoding:** dyanaqlima
 
 ## Menentukan Pertanyaan Bisnis
 """
@@ -26,20 +26,6 @@ day_df=pd.read_csv('https://raw.githubusercontent.com/dyanaqlima323/Machine-Lear
 
 hour_df=pd.read_csv('https://raw.githubusercontent.com/dyanaqlima323/Machine-Learning-Bangkit-H1/8a153b8c0b68ee947840c89c75c4ca6f581c6d21/hour.csv')
 
-"""## Cleaning Data
-
-### Data Frame Day
-"""
-
-#Mengubah nama kolom
-day_df.rename(columns={'dteday' : 'date', 'yr': 'year', 'mnth': 'month'}, inplace=True)
-
-#Mengganti tipe data
-day_df['date'] = pd.to_datetime(day_df['date'])
-
-day_df.info()
-
-"""### Data Frame Hour"""
 
 #Mengganti tipe data
 hour_df['dteday'] = pd.to_datetime(hour_df['dteday'])
@@ -48,10 +34,8 @@ hour_df['dteday'] = pd.to_datetime(hour_df['dteday'])
 hour_df.rename(columns={'dteday' : 'date', 'yr': 'year', 'mnth': 'month', 'hr' : 'hour'}, inplace=True)
 
 
-"""## Visualization & Explanatory Analysis
-
-### **Pertanyaan 1: Apakah libur (holiday) memiliki pengaruh terhadap pola penggunaan sepeda? Apakah ada peningkatan atau penurunan jumlah pengguna sepeda selama libur?**
-"""
+# Judul Dashboard
+st.title("🚲Bike Sharing Dashboard🚲")
 
 # Pisahkan data berdasarkan hari libur dan non-libur
 holiday_data = day_df[day_df['holiday'] == 1]
@@ -72,7 +56,7 @@ with col2:
     st.metric("Non-Holiday", value=avg_cnt_non_holiday)
 
 # Visualisasikan perbedaan jumlah pengguna sepeda antara hari libur dan non-libur
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(6, 4))
 plt.bar(['Holiday', 'Non-Holiday'], [avg_cnt_holiday, avg_cnt_non_holiday], color=['red', '#28E841'])
 plt.title('Average Bike Users on Holiday vs. Non-Holiday')
 plt.xlabel('Day Type')
@@ -80,13 +64,11 @@ plt.ylabel('Average Bike Users (cnt)')
 st.pyplot()
 
 
-"""### **Pertanyaan 2 : Bagaimana kondisi cuaca memengaruhi jumlah pengguna sepeda?**"""
-
 # Buat strip plot untuk membandingkan jumlah pengguna sepeda berdasarkan kondisi cuaca
 st.subheader('Effect of Weather Conditions on Bike Usage')
 
-plt.figure(figsize=(10, 6))
-sns.stripplot(x='weathersit', y='cnt', data=day_df, palette='muted', alpha=0.7)
+plt.figure(figsize=(8, 6))
+sns.stripplot(x='weathersit', y='cnt', data=day_df, palette=['purple', 'pink', 'blue'], alpha=0.7)
 plt.title('Effect of Weather Conditions on Bike Usage')
 plt.xlabel('Weather Condition')
 plt.ylabel('Bike Users Count')
@@ -95,28 +77,19 @@ plt.grid(True)
 st.pyplot()
 
 
-"""## Conclusion
 
-- Conclution pertanyaan 1. Apakah libur (holiday) memiliki pengaruh terhadap pola penggunaan sepeda? Apakah ada peningkatan atau penurunan jumlah pengguna sepeda selama libur?
-
- -> Jawab:
-Pola penggunaan sepeda cenderung lebih tinggi pada hari non-holiday daripada pada hari libur, mungkin karena orang-orang memilih aktivitas lain saat libur atau karena perbedaan rutinitas harian. Jumlah pengguna sepeda cenderung lebih rendah pada hari libur. Adapun strategi yang mungkin untuk menarik lebih banyak pengguna sepeda pada hari libur, seperti:
-   *   Promo khusus dengan penawaran atau diskon liburan
-   *   Penyesuaian persediaan sepeda berdasarkan data historis untuk memastikan ketersediaan yang memadai
-   *   Mengadakan acara khusus atau tur bersepeda dengan tema liburan untuk meningkatkan minat masyarakat dalam bersepeda.
-
-- Conclution pertanyaan 2. Apakah terdapat tren peningkatan atau penurunan dalam penggunaan sepeda dari musim ke musim dalam beberapa tahun terakhir?
-
-->  Jawab:
-
- - Conclution pertanyaan 2. Bagaimana kondisi cuaca memengaruhi jumlah pengguna sepeda?
-
-->  Jawab:
-Berdasarkan analisis visual pola penggunaan sepeda pada kondisi cuaca yang berbeda, terlihat bahwa jumlah pengguna sepeda cenderung lebih banyak saat cuaca cerah (clear) dan lebih sedikit saat cuaca hujan ringan (light rain). Hal ini menunjukkan bahwa kondisi cuaca memengaruhi pola penggunaan sepeda, dengan cuaca cerah cenderung meningkatkan jumlah penggunaan sepeda dan cuaca hujan ringan cenderung mengurangi jumlah penggunaan sepeda. Oleh karena itu, kondisi cuaca dapat memainkan peran penting dalam pola penggunaan sepeda
-"""
 
 # Tampilan Streamlit
+st.sidebar.markdown("[Download Dataset](https://www.kaggle.com/code/ramanchandra/bike-sharing-data-analysis)")
 
-with st.sidebar:
-    # Menambahkan logo perusahaan
-    st.image("https://github.com/dicodingacademy/assets/raw/main/logo.png")
+st.sidebar.markdown("Find Me On: ")
+st.sidebar.markdown(
+    "**Email: [dyanaqlima323@gmail.com](dyanaqlima323@gmail.com)**")
+st.sidebar.markdown(
+    "**ID Dicoding: [dyanaqlima](https://www.dicoding.com/users/dyanaqlima/academies)**")
+st.sidebar.markdown(
+    "**LinkedIn: [Dyan Aqlima Febriyanti](https://www.linkedin.com/in/dyan-aqlima-febriyanti/)**")
+st.sidebar.markdown(
+    "**Github: [dyanaqlima323](https://github.com/dyanaqlima323)**")
+
+
